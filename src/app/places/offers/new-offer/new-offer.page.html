@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places/offers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Offer</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCreateOffer()" [disabled]="!form.valid || !form.get('image').value">
+        <ion-icon slot="start" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!form.get('description').valid && form.get('description').touched">
+        <ion-col size-sm="6" offset-sm="3">
+          <p>
+            Description must be between 1 and 200 characters
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Short Description</ion-label>
+            <ion-textarea rows="3" formControlName="description"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Price</ion-label>
+            <ion-input type="number" formControlName="price"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size-sm="3" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Available From</ion-label>
+            <ion-datetime min="2019-01-01" max="2022-01-01" formControlName="dateFrom"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size-sm="3">
+          <ion-item>
+            <ion-label position="floating">Available To</ion-label>
+            <ion-datetime min="2019-01-02" max="2022-01-01" formControlName="dateTo"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <app-location-picker></app-location-picker>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <app-image-picker (imagePick)="onImagePicked($event)" [showPreview]="form.get('image').value">
+          </app-image-picker>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

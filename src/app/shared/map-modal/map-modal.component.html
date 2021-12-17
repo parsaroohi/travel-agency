@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pick Location</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCancel()">cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="mapp">
+    <mapir-map [mapPosition]="currentPosition" [zoom]="6"
+      [markerPositions]="[{lat:34,lng:51},{lat:32,lng:51},{lat:34,lng:52}]"></mapir-map>
+  </div>
+</ion-content>

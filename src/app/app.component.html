@@ -1,0 +1,32 @@
+<ion-app>
+  <ion-menu side="start" menuId="menu_1">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Drawer Header</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle menu="menu_1">
+          <ion-item routerLink="/places/discover">
+            <ion-icon slot="start" name="business"></ion-icon>
+            <ion-label>Discover Places</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle menu="menu_1">
+          <ion-item routerLink="/bookings">
+            <ion-icon slot="start" name="checkbox-outline"></ion-icon>
+            <ion-label>Reserved</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle menu="menu_1">
+          <ion-item (click)="onLogout()" button>
+            <ion-icon slot="start" name="exit"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>
